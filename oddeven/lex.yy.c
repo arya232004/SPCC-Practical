@@ -359,10 +359,10 @@ static char *yy_last_accepting_cpos;
 char *yytext;
 #line 1 "lex.l"
 #define INITIAL 0
-#line 3 "lex.l"
-#include<stdio.h> 
-int i; 
-int yywrap();
+#line 2 "lex.l"
+    #include<stdio.h>
+    int i;
+    int yywrap();
 #line 367 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
@@ -514,10 +514,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 8 "lex.l"
+#line 7 "lex.l"
 
-
-#line 521 "lex.yy.c"
+#line 520 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -602,19 +601,23 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 10 "lex.l"
-{i=atoi(yytext); 
-		if(i%2==0) 
-			printf("Even"); 
-		else
-		printf("Odd");} 
+#line 8 "lex.l"
+{
+    i=atoi(yytext);
+    if(i % 2 == 0){
+        printf("Even");
+    }
+    else{
+        printf("Odd");
+    }
+}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 15 "lex.l"
+#line 17 "lex.l"
 ECHO;
 	YY_BREAK
-#line 618 "lex.yy.c"
+#line 621 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1500,17 +1503,14 @@ int main()
 	return 0;
 	}
 #endif
-#line 15 "lex.l"
+#line 17 "lex.l"
 
 
 int yywrap(){
     return 1;
-} 
+}
 
-/* Driver code */
-int main() 
-{ 
-
-	yylex(); 
-	return 0; 
-} 
+int main(){
+    yylex();
+    return 0;
+}

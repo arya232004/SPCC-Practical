@@ -1,39 +1,33 @@
 %{
-#include <stdio.h>
-int yywrap();
-#include <stdlib.h>
+    #include<stdio.h>
+    int i;
+    int flag;
+    int yywrap();
 %}
 
 %%
 [0-9]+ {
-    int c = atoi(yytext);
-    int flag = 0; // Initialize flag
-    if (c == 2) {
-        printf("\n Prime number");
-    } else if (c == 0 || c == 1) {
-        printf("\n Not a Prime number");
-    } else {
-        for (int j = 2; j < c; j++) {
-            if (c % j == 0) {
-                flag = 1;
-                break;
-            }
-        }
-        if (flag == 1) {
-            printf("\n Not a prime number");
-        } else {
-            printf("\n Prime number");
+    flag=0;
+    i=atoi(yytext);
+    for (int j=2; j<i;j++){
+        if(i % j == 0){
+            flag=1;
+            break;
         }
     }
-}
-. {
-    printf("\n Invalid input"); // Handle non-numeric input
+    if(flag == 0){
+        printf("Prime");
+    }
+    else{
+        printf("Not a prime");
+    }
 }
 %%
-int yywrap() {
-    return 1; 
+int yywrap(){
+    return 1;
 }
-int main() {
+
+int main(){
     yylex();
     return 0;
 }
