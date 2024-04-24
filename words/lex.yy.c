@@ -360,9 +360,10 @@ char *yytext;
 #line 1 "lex.l"
 #define INITIAL 0
 #line 2 "lex.l"
+    #include<stdio.h>
   int counter=0;   
   int yywrap(); 
-#line 366 "lex.yy.c"
+#line 367 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -513,9 +514,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 6 "lex.l"
+#line 7 "lex.l"
 
-#line 519 "lex.yy.c"
+#line 520 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -600,7 +601,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 7 "lex.l"
+#line 8 "lex.l"
 {
     if (yyleng > counter){
         counter=yyleng;
@@ -609,10 +610,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 12 "lex.l"
+#line 13 "lex.l"
 ECHO;
 	YY_BREAK
-#line 616 "lex.yy.c"
+#line 617 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1498,7 +1499,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 12 "lex.l"
+#line 13 "lex.l"
 
 
 int yywrap(){

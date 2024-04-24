@@ -1,9 +1,9 @@
-import re
+import re 
 
-code="""
+code ="""
 int main(){
-    int x=10;
-    if (x>5){
+    int x=5;
+    if(x > 5){
         return x+5;
     }
     else{
@@ -12,17 +12,14 @@ int main(){
 }
 """
 
-def lex(code):
+def operator(code):
     tokens=[]
-    reg_op=r'[-+*/%<>=!^&]'
-    
-    for match in re.finditer(reg_op,code):
+    pattern=r'[-+*/%^&=]'
+    for match in re.finditer(pattern,code):
         op=match.group()
-        
         if op:
-            tokens.append(("OPERATOR",op))
-            
+            tokens.append(('OPERATOR',op))
     return tokens
 
-token=lex(code)
-print(token)
+op=operator(code)
+print(op)

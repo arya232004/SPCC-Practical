@@ -13,17 +13,17 @@ int main(){
 
 def lex(code):
     tokens=[]
-    keywords=['int','main','return','if','else']
-    reg_key=r'[a-zA-Z_][a-zA-Z0-9_]*'
-    reg_ident=r'\b(?:'+'|'.join(keywords)+r')\b'
-    mix_pattern=f'({reg_ident})|({reg_key})'
+    reg_id=r'[a-zA-Z_][a-zA-Z0-9_]*'
+    key=['return','int','main','else','if']
+    reg_key=r'\b(?:'+'|'.join(key)+r')\b'
+    mix_pattern=f'({reg_key})|({reg_id})'
     
     for match in re.finditer(mix_pattern,code):
-        keyword,identifier=match.groups()
-        if keyword:
-            tokens.append(('KEYWORD',keyword))
-        elif identifier:
-            tokens.append(('IDENTIFIER',identifier))
+        k,id=match.groups()
+        if k:
+            tokens.append(('keyword',k))
+        else:
+            tokens.append(('Identifier',id))
     return tokens
     
     

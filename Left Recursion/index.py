@@ -1,25 +1,32 @@
 grammar={
-    'S':[('L'),'x'],
-    'L':['LS','S']
+    'S':['Sx','A'],
+    'A':['xA','s']
 }
-def rec(grammar):
-    non_terminals=list(grammar.keys())
-    for A in non_terminals:
-        prod=grammar[A]
-        alp_prd=[]
-        beta_prd=[]
-        for production in prod:
-            if production.startswith(A):
-                alp_prd.append(production[1:])
-            else:
-                beta_prd.append(production)
-        if len(alp_prd) == 0:
-            continue
-        grammar[A]=[]
-        new_non_terminal=A+" ' "
-        grammar[A].extend([beta+new_non_terminal for beta in beta_prd])
-        grammar[new_non_terminal]=[alp+new_non_terminal if alp !=' ' else 'ε' for alp in alp_prd]+['ε']
-    return grammar
 
-op=rec(grammar)
+def left(grammar):
+    non_terminal=list(grammar.keys())
+    
+    for n in non_terminal:
+        alph_prod=[]
+        beta_prd=[]
+        prod=grammar[n]
+        
+        for p in prod:
+            if p.startswith(n):
+                alph_prod.append(p[1:])
+            else:
+                beta_prd.append(p)
+        
+        if len(alph_prod) == 0:
+            continue 
+        
+        new_non_terminal=n+"'"
+        grammar[n]=[]
+        grammar[n]=[beta+new_non_terminal for beta in beta_prd]
+        grammar[new_non_terminal]=[alph+new_non_terminal if alph!='' else 'ε' for alph in alph_prod]+['ε']
+        
+    return grammar
+        
+
+op=left(grammar)
 print(op)
